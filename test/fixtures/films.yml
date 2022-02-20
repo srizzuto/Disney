@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titulo: MyString
+  f_creacion: 2022-02-19
+  calificacion: 1
+  personaje: one
+
+two:
+  titulo: MyString
+  f_creacion: 2022-02-19
+  calificacion: 1
+  personaje: two
