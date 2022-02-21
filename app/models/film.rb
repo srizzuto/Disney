@@ -1,3 +1,3 @@
 class Film < ApplicationRecord
-  has_many :personaje
+  has_many :personajes
 end

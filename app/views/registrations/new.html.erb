@@ -1,0 +1,26 @@
+
+<div class="p-5 m-auto align-items-center">
+  <h1> Crear cuenta </h1>
+
+  <%= form_with model: @user, url: signup_path do |form| %>
+    <div class="mb-3">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control", placeholder: "Alkemy" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :email %>
+      <%= form.text_field :email, class: "form-control", placeholder: "test@alkemy.com" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "form-control", placeholder: "MyPassword123"%>
+    </div>
+    <div class="mb-3">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation, class: "form-control", placeholder: "MyPassword123" %>
+    </div>
+    <div class="mb-3">
+      <%= form.submit "Crear", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
