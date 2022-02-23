@@ -2,7 +2,15 @@
 <div class="p-5 m-auto align-items-center">
   <h1> Crear cuenta </h1>
 
-  <%= form_with model: @user, url: signup_path do |form| %>
+  <%= form_with model: @user, data: {turbo: false}, url: signup_path do |form| %>
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <% @user.errors.full_messages.each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    <% end %>
+    
     <div class="mb-3">
       <%= form.label :name %>
       <%= form.text_field :name, class: "form-control", placeholder: "Alkemy" %>
