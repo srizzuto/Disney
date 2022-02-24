@@ -1,0 +1,21 @@
+
+<div class="p-5 m-auto align-items-center">
+
+  <h1> Iniciar Sesión </h1>
+
+  <%= form_with url: signin_path do |form| %>
+
+    <div class="mb-3">
+      <%= form.label :email %>
+      <%= form.text_field :email, class: "form-control", placeholder: "test@alkemy.com" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "form-control", placeholder: "MyPassword123"%>
+    </div>
+    <div class="mb-3 d-flex justify-content-between">
+      <%= form.submit "Iniciar Sesión", class: "btn btn-primary" %>
+      <%= link_to "Crear cuenta", signup_path %>
+    </div>
+  <% end %>
+</div>

@@ -27,8 +27,9 @@
       <%= form.label :password_confirmation %>
       <%= form.password_field :password_confirmation, class: "form-control", placeholder: "MyPassword123" %>
     </div>
-    <div class="mb-3">
+    <div class="mb-3 d-flex justify-content-between">
       <%= form.submit "Crear", class: "btn btn-primary" %>
+      <%= link_to "Iniciar Sesión", signin_path %>
     </div>
   <% end %>
 </div>

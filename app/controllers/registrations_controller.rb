@@ -8,7 +8,7 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Usuario creado"
+      redirect_to signin_path, notice: "Usuario creado"
     else
       render :new
     end

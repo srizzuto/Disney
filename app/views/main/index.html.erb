@@ -1,5 +1,9 @@
 <div class="container text-center align-items-center justify-content-center mt-5">
-  <% if @user %>
-    Bienvenido, se encuentra logueado como <%= @user.name %> <span><%= button_to "Cerrar sesión", logout_path, method: :delete %></span>
+  <% if Current.user %>
+    Bienvenido, se encuentra logueado como <%= Current.user.name %> <span><%= button_to "Cerrar sesión", logout_path, method: :delete %></span>
+  <% else %>
+    <%= link_to "Iniciar Sesión", signin_path %>
   <% end %>
+
+  <h1> Listado de Películas </h1>
 </div>
