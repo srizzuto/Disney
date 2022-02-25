@@ -14,8 +14,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_20_142536) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -34,35 +34,35 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_20_142536) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
+    t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "films", force: :cascade do |t|
-    t.string "titulo"
-    t.date "f_creacion"
-    t.integer "calificacion"
-    t.integer "personaje_id", null: false
+    t.string "titulo", null: false
+    t.date "f_creacion", null: false
+    t.integer "calificacion", null: false
+    t.integer "personaje_id"
+    t.integer "genero_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["personaje_id"], name: "index_films_on_personaje_id"
   end
 
   create_table "generos", force: :cascade do |t|
-    t.string "nombre"
-    t.integer "film_id", null: false
+    t.string "nombre", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["film_id"], name: "index_generos_on_film_id"
   end
 
   create_table "personajes", force: :cascade do |t|
-    t.string "nombre"
-    t.integer "edad"
-    t.integer "peso"
+    t.string "nombre", null: false
+    t.integer "edad", null: false
+    t.integer "peso", null: false
     t.text "historia"
-    t.integer "film_id", null: false
+    t.integer "film_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["film_id"], name: "index_personajes_on_film_id"
@@ -79,6 +79,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_20_142536) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "films", "personajes"
-  add_foreign_key "generos", "films"
-  add_foreign_key "personajes", "films"
 end

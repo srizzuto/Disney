@@ -1,0 +1,46 @@
+<h1> Agregar película </h1>
+
+<%= form_with model: @film, url: film_path do |form| %>
+  <% if form.object.errors.any? %>
+    <div class="alert alert-danger">
+      <% form.object.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+      <%= form.label :titulo %>
+      <%= form.text_field :titulo, class: "form-control", placeholder: "La Bella y la Bestia" %>
+    </div>
+    <div class="mb-3 d-block">
+      <div class="mb-2"><%= form.label :f_creacion, "Fecha de creación" %></div>
+      <div><%= form.date_select :f_creacion, start_year: 1800, end_year: Time.now.year, class: "form-control", placeholder: "28/01/1930" %></div>
+    </div>
+    <div class="mb-3">
+      <%= form.label :calificacion %>
+      <%= form.text_field :calificacion, class: "form-control", placeholder: "Entre 1 y 5"%>
+    </div>
+    <div class="mb-3 d-flex justify-content-between">
+      <%= form.submit "Agregar", class: "btn btn-primary" %>
+      <%= link_to "Volver al Índice", root_path %>
+    </div>  
+<% end %>
+
+<h2 class="my-5"> Listado de Películas </h2>
+
+<% @films.each do |f|%>
+  <div class="container d-flex justify-content-around">
+    <div class="container mb-3"><b>Título:</b> <%= f.titulo %></div>
+    <div class="container mb-3"><b>Fecha de creación:</b> <%= f.f_creacion %></div>
+    <div class="container mb-3"><b>Personajes asociados:</b>
+      <% unless f.personaje_id.nil?%>
+        <%=f.personaje_id.name%>
+      <% else %>
+        Sin personajes asociados
+      <% end %>
+      <span class="mx-3"><%= f.collection_select :personaje_id, @personajes, :id, :nombre, { multiple: true, class: 'form-control' } %></span>
+      <span><%= button_to "Agregar Personaje", method: :post, class: "btn btn-outline-success" %></span>
+    </div>
+  </div>
+<% end %>

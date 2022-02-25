@@ -4,8 +4,8 @@ class CreateFilms < ActiveRecord::Migration[7.0]
       t.string :titulo, null: false
       t.date :f_creacion, null: false
       t.integer :calificacion, null: false
-      t.references :personaje, null: false, foreign_key: true
-
+      t.references :personaje, foreign_key: true
+      t.references :genero, foreign_key: true
       t.timestamps
     end
   end

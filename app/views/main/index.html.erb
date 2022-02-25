@@ -6,11 +6,11 @@
       <%= link_to "Iniciar Sesión", signin_path %>
     <% end %>
   </div>
+  <h1> Seleccione un listado </h1>
 
-  <h1> Listado de Películas </h1>
   <div class="container d-flex justify-content-around my-5">
-    <%= button_to "Agregar Película", film_path, class:"btn btn-primary" %>
-    <%= button_to "Agregar Personaje", personaje_path, class:"btn btn-primary"%>
-    <%= button_to "Agregar Género", genre_path, class:"btn btn-primary"%>
+    <%= link_to "Listado de Películas", film_path, class:"btn btn-primary" %>
+    <%= link_to "Listado de Personajes", personaje_path, class:"btn btn-primary"%>
+    <%= link_to "Listado de Géneros", genero_path, class:"btn btn-primary"%>
   </div>
 </div>

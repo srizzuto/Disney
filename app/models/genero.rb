@@ -1,3 +1,3 @@
 class Genero < ApplicationRecord
-  belongs_to :film
+  has_and_belongs_to_many :films
 end

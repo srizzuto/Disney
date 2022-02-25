@@ -1,0 +1,48 @@
+<h1> Agregar personaje </h1>
+
+<%= form_with model: @personaje, url: personaje_path do |form| %>
+  <% if form.object.errors.any? %>
+    <div class="alert alert-danger">
+      <% form.object.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+      <%= form.label :nombre %>
+      <%= form.text_field :nombre, class: "form-control", placeholder: "Bestia" %>
+    </div>
+    <div class="mb-3 d-block">
+      <div class="mb-2"><%= form.label :edad %></div>
+      <div><%= form.number_field :edad, class: "form-control", placeholder: "28/01/1930" %></div>
+    </div>
+    <div class="mb-3">
+      <%= form.label :peso %>
+      <%= form.number_field :peso, class: "form-control", placeholder: "Peso aproximado"%>
+    </div>
+    <div class="mb-3">
+      <%= form.label :historia %>
+      <%= form.text_field :historia, class: "form-control", placeholder: "Historia de trasfondo" %>
+    </div>
+    <div class="mb-3 d-flex justify-content-between">
+      <%= form.submit "Agregar", class: "btn btn-primary" %>
+      <%= link_to "Volver al Índice", root_path %>
+    </div>  
+<% end %>
+
+<h2 class="my-5"> Listado de Personajes </h2>
+
+<% @personajes.each do |p|%>
+  <div class="container d-flex justify-content-around">
+    <div class="container mb-3"><b>Nombre:</b> <%= p.nombre %></div>
+    <div class="container mb-3"><b>Edad:</b> <%= p.edad %></div>
+    <div class="container mb-3"><b>Películas asociados:</b>
+      <% unless p.film_id.nil?%>
+        <%=p.film_id.name%>
+      <% else %>
+        Sin películas asociadas
+      <% end %>
+    </div>
+  </div>
+<% end %>

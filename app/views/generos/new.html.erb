@@ -1,0 +1,31 @@
+<h1> Agregar género </h1>
+
+<%= form_with model: @genero, url: genero_path do |form| %>
+  <% if form.object.errors.any? %>
+    <div class="alert alert-danger">
+      <% form.object.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+      <div class="mb-2"><%= form.label :nombre %></div>
+      <%= form.text_field :nombre, class: "form-control", placeholder: "Acción" %>
+    </div>
+    <div class="mb-3 d-flex justify-content-between">
+      <%= form.submit "Agregar", class: "btn btn-primary" %>
+      <%= link_to "Volver al Índice", root_path %>
+    </div>  
+<% end %>
+
+<h2 class="my-5"> Listado de género </h2>
+
+<% @generos.each do |g|%>
+  <div class="container d-flex justify-content-around">
+    <div class="container mb-3"><b>Género:</b> <%= g.nombre %></div>
+    <div class="container mb-3"><b>Películas asociadas:</b>
+      <%= g.films%>
+    </div>
+  </div>
+<% end %>

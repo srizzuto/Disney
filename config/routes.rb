@@ -22,11 +22,11 @@ Rails.application.routes.draw do
   patch "personaje", to: "personajes#update"
   delete "personaje", to: "personajes#destroy"
 
-  get "genre", to: "genres#new"
-  post "genre", to: "genres#create"
-  get "genre_edit", to: "genres#edit"
-  patch "genre", to: "genres#update"
-  delete "genre", to: "genres#destroy"
+  get "genero", to: "generos#new"
+  post "genero", to: "generos#create"
+  get "genero_edit", to: "generos#edit"
+  patch "genero", to: "generos#update"
+  delete "genero", to: "generos#destroy"
 
   root to: "main#index"
 
